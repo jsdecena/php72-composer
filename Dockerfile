@@ -6,13 +6,16 @@ RUN apt-get update && \
     zip \
     libjpeg-dev \
     libpng-dev \
-    libpq-dev
+    libpq-dev \
+    zlib1g-dev \
+    libzip-dev \
+    libxpm-dev
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install extensions
-RUN docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl
+RUN docker-php-ext-install pdo_mysql pdo_pgsql mbstring exif pcntl zip
 RUN docker-php-ext-configure gd --with-gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
 RUN docker-php-ext-install gd
 
