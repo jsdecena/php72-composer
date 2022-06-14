@@ -1,4 +1,4 @@
-FROM php:7.2
+FROM php:7.3.28
 
 # Install dependencies
 RUN apt-get update && \
